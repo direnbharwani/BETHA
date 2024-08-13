@@ -7,19 +7,21 @@ import songSchema from "../schemas/songSchema";
 
 /* ------------------------------------------------------------------------- */
 
+const endpoint = '/songs';
+
 export const songsRouter : RouteConfig = (router: Router, data: any) => {
 
     const ajv = new Ajv();
     const validator = ajv.compile(songSchema);  // Compiled schema to use for validation on POST requests
 
     // GET endpoint (all songs)
-    router.get('/songs', (request, response) => {
-        response.status(200).json(data);
+    router.get(`${endpoint}`, (request, response) => {
         logger.info('Fetched all songs');
+        return response.status(200).json(data);
     });
 
     // GET endpoint (by song id)
-    router.get('/songs/:id', (request, response) => {
+    router.get(`${endpoint}/:id`, (request, response) => {
         const songId = parseInt(request.params.id);
 
         // Ensure songId is actually a number
@@ -33,22 +35,21 @@ export const songsRouter : RouteConfig = (router: Router, data: any) => {
         }
 
         const song = data.find((item: any) => item.id === songId);
-        if (song) {
-            logger.info(`Fetching song with id ${songId}`);
-            response.status(200).json(song)
-        } else {
+        if (!song) {
             logger.warn(`Song with id ${songId} not found`);
-            response.status(404).json({
+            return response.status(404).json({
                 statusCode: 404,
                 statusDescription: 'Not Found',
                 message: 'Song not found.'
             });
         }
 
+        logger.info(`Fetching song with id ${songId}`);
+        return response.status(200).json(song);
     });
 
     // POST endpoint
-    router.post('/songs', (request, response) => {
+    router.post(`${endpoint}`, (request, response) => {
         const isValid: boolean = validator(request.body);
         if (!isValid) {
             logger.warn(`Invalid POST request body`);
@@ -65,11 +66,46 @@ export const songsRouter : RouteConfig = (router: Router, data: any) => {
         };
         data.push(newSong);
 
-        logger.info(`Successfully added new song entry with id ${newSong.id}`);
-        response.status(201).json({
+        logger.info(`Successfully added new song with id ${newSong.id}`);
+        return response.status(201).json({
             statusCode: 201,
             statusDescription: 'Created',
-            message: 'Song entry created.'
-        })
+            message: 'Song added.'
+        });
+    })
+
+    // DELETE endpoint
+    router.delete(`${endpoint}/:id`, (request, response) => {
+        const songId = parseInt(request.params.id);
+
+        // Ensure songId is actually a number
+        if (isNaN(songId) == true) {
+            logger.warn(`Request param ${request.params.id} is not a number`);
+            return response.status(400).json({
+                statusCode: 400,
+                statusDescription: 'Bad Request',
+                message: 'Invalid ID.'
+            });
+        }
+
+        const songIndex = data.findIndex((item: any) => item.id === songId);
+        if (songIndex === -1)
+        {
+            logger.warn(`Song with id ${songId} not found`);
+            return response.status(404).json({
+                statusCode: 404,
+                statusDescription: 'Not Found',
+                message: 'Song not found.'
+            });
+        }
+
+        data.splice(songIndex, 1);
+
+        logger.info(`Successfully deleted song with id ${songId}`);
+        return response.status(200).json({
+            statusCode: 200,
+            statusDescription: 'OK',
+            message: 'Song deleted.'
+        });
     })
 }

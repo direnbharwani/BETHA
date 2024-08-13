@@ -49,7 +49,7 @@ describe('POST /api/songs', () => {
         expect(response.body).toEqual({
             statusCode: 201,
             statusDescription: 'Created',
-            message: 'Song entry created.'
+            message: 'Song added.'
         });
     });
 
