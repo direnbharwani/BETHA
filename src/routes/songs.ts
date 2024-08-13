@@ -14,6 +14,8 @@ export const songsRouter : RouteConfig = (router: Router, data: any) => {
     const ajv = new Ajv();
     const validator = ajv.compile(songSchema);  // Compiled schema to use for validation on POST requests
 
+    let nextId = data.length ? data[data.length - 1].id + 1 : 1;
+
     // GET endpoint (all songs)
     router.get(`${endpoint}`, (request, response) => {
         logger.info('Fetched all songs');
@@ -61,7 +63,7 @@ export const songsRouter : RouteConfig = (router: Router, data: any) => {
         }
 
         const newSong = {
-            id: data.length ? data[data.length - 1].id + 1 : 1,
+            id: nextId++,
             ...request.body
         };
         data.push(newSong);
