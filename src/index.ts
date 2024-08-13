@@ -4,11 +4,7 @@ import { songsRouter } from './routes/songs';
 
 /* ------------------------------------------------------------------------- */
 
-// Define constants
-const PORT = process.env.PORT || 3000;
-
-/* ------------------------------------------------------------------------- */
-
+// Create application
 const appConfig: AppConfig[] = [
     {
         route: songsRouter,
@@ -19,11 +15,14 @@ const appConfig: AppConfig[] = [
 const app = createApp(appConfig);
 
 // Listen for requests
+const PORT = process.env.PORT || 3000;
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });
 }
+
+/* ------------------------------------------------------------------------- */
 
 export default app;
 
