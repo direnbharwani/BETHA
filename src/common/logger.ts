@@ -10,9 +10,10 @@ const loggerTransports: winston.transport[] = [
     })
 ];
 
+// Avoid adding this for unit tests since file logigng is not used and adding this fails compilation
 if (process.env.NODE_ENV !== 'test') {
     loggerTransports.push(
-        new DailyRotateFile({                                               // Logs to file through DailyRotateFile
+        new DailyRotateFile({
             filename: path.join(process.cwd(), 'logs', 'app-%DATE%.log'),   // Distinguish log files by date
             datePattern: 'YYYY-MM-DD',
             maxFiles: '1d',                                                 // Keep files for 1 day
