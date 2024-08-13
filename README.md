@@ -28,7 +28,7 @@
   - [POST](#post)
   - [DELETE](#delete)
 
-<br/><br/>
+<br/>
 
 # Features
 
