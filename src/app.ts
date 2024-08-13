@@ -3,7 +3,6 @@ import fs from 'fs';
 import morgan from 'morgan';
 
 import logger from './common/logger';
-import { songsRouter } from './routes/songs';
 import { dataLoader } from './data/dataLoader';
 import { AppConfig } from './common/types';
 
