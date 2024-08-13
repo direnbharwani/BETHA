@@ -1,23 +1,16 @@
 import express from 'express';
-import fs from 'fs';
-import path from 'path';
 import morgan from 'morgan';
 
 import logger from './common/logger';
-import songRoutes from './routes/songs';
+import songData from './data/songData';
 
 /* ------------------------------------------------------------------------- */
 
 // Define constants
 const app = express();
 const PORT = process.env.PORT || 3000;
-const jsonFilePath = path.join(__dirname, '/data/data.json');
 
 /* ------------------------------------------------------------------------- */
-
-// Load JSON into memory
-let data = JSON.parse(fs.readFileSync(jsonFilePath, 'utf-8'));
-console.log('Parsed JSON:', data);
 
 // Use morgan for HTTP request logging
 // 'combined' is a format for logging the details of request (easy)
@@ -28,13 +21,12 @@ app.use(morgan('combined', {
 }));
 
 app.use(express.json());
-// app.use('/api', songRoutes);
 
 /* ------------------------------------------------------------------------- */
 
 // GET endpoint (all songs)
 app.get('/songs', (request, response) => {
-    response.status(200).json(data);
+    response.status(200).json(songData);
     logger.info('Fetched all songs');
 });
 
@@ -51,7 +43,7 @@ app.get('/songs/:id', (request, response) => {
         });
     }
 
-    const song = data.find((item: any) => item.id === songId);
+    const song = songData.find((item: any) => item.id === songId);
     if (song) {
         logger.info(`Fetching song with id ${songId}`);
         response.status(200).json(song)

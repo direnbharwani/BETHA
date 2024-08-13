@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Back In Black",
+        "artist": "AC/DC",
+        "album": "Back In Black",
+        "duration": 255000,
+        "year": 1980
+    },
+    {
+        "id": 2,
+        "name": "Beast and the Harlot",
+        "artist": "Avenged Sevenfold",
+        "album": "City of Evil",
+        "duration": 344000,
+        "year": 2005
+    },
+    {
+        "id": 3,
+        "name": "So Cold",
+        "artist": "Breaking Benjamin",
+        "album": "We Are Not Alone",
+        "duration": 273000,
+        "year": 2004
+    },
+    {
+        "id": 4,
+        "name": "Hotel California",
+        "artist": "Eagles",
+        "album": "Hotel California",
+        "duration": 391000,
+        "year": 1976
+    },
+    {
+        "id": 5,
+        "name": "The Glass",
+        "artist": "Foo Fighters, H.E.R",
+        "album": "The Glass",
+        "duration": 211000,
+        "year": 2023
+    },
+    {
+        "id": 6,
+        "name": "Aerials",
+        "artist": "System Of A Down",
+        "album": "Toxicity",
+        "duration": 235000,
+        "year": 2001
+    },
+    {
+        "id": 7,
+        "name": "Time of Dying",
+        "artist": "Three Days Grace",
+        "album": "One-X",
+        "duration": 186000,
+        "year": 2006
+    }
+]
