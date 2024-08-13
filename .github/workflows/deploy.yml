@@ -1,19 +1,15 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node, then deploy them to Azure
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: Test and deploy BETHA to Azure VM
 
 on:
   push:
     branches:
-      - main
+      - 'main'
     paths:
       - './github/workflows/deploy.yml'
       - 'src/**'
       - 'test/**'
       - 'package.json'
   workflow_dispatch:
-
 
 jobs:
   build:
