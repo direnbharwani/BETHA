@@ -113,7 +113,7 @@ docker-compose up --build
 <table>
     <tr>
         <td><strong>id*</strong></td>
-        <td><code>int</code><td>
+        <td><code>int</code></td>
         <td>The song id</td>
     </tr>
 </table>
