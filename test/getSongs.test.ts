@@ -7,31 +7,13 @@ import fs from 'fs';
 
 jest.mock('fs');  // Mock the fs module
 
-// Mock data to be used in tests
-const mockSongData = [
-    {
-        id: 1,
-        name: "Back In Black",
-        artist: "AC/DC",
-        album: "Back In Black",
-        duration: 255000,
-        year: 1980
-    },
-    {
-        id: 2,
-        name: "Beast and the Harlot",
-        artist: "Avenged Sevenfold",
-        album: "City of Evil",
-        duration: 344000,
-        year: 2005
-    }
-];
+// Load mock data from the mockData.json file
+const mockData = require('./mockSongData.json');
 
 // Mock fs.readFileSync to return the mock data
 (fs.readFileSync as jest.Mock).mockImplementation((filePath: string) => {
-    console.log(`Mocked fs.readFileSync called with path: ${filePath}`);
     if (filePath.endsWith('songData.json')) {   // This is very specific
-        return JSON.stringify(mockSongData);
+        return JSON.stringify(mockData);
     }
     return JSON.stringify([]);
 });
@@ -52,18 +34,21 @@ describe('GET /api/songs', () => {
 
     test('[200] should return all songs', async () => {
         const response = await request(app).get('/api/songs');
+
         expect(response.status).toBe(200);
-        expect(response.body).toEqual(mockSongData);
+        expect(response.body).toEqual(mockData);
     });
 
     test('[200] should return specific song by ID', async () => {
         const response = await request(app).get('/api/songs/1');
+
         expect(response.status).toBe(200);
-        expect(response.body).toEqual(mockSongData[0]);
+        expect(response.body).toEqual(mockData[0]);
     });
 
     test('[400] should return 400 for invalid id', async () => {
         const response = await request(app).get('/api/songs/hello');
+
         expect(response.status).toBe(400);
         expect(response.body).toEqual({
             statusCode: 400,
@@ -74,6 +59,7 @@ describe('GET /api/songs', () => {
 
     test('[404] should return 404 for non-existent song', async () => {
         const response = await request(app).get('/api/songs/999');
+
         expect(response.status).toBe(404);
         expect(response.body).toEqual({
             statusCode: 404,

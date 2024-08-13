@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "Back In Black",
+        "artist": "AC/DC",
+        "album": "Back In Black",
+        "duration": 255000,
+        "year": 1980
+    },
+    {
+        "id": 2,
+        "name": "Beast and the Harlot",
+        "artist": "Avenged Sevenfold",
+        "album": "City of Evil",
+        "duration": 344000,
+        "year": 2005
+    }
+]

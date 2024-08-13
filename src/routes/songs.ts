@@ -1,12 +1,16 @@
 import { Router } from "express";
-import fs from 'fs';
+import Ajv from "ajv";
 
 import logger from "../common/logger";
 import { RouteConfig } from "../common/types";
+import songSchema from "../schemas/songSchema";
 
 /* ------------------------------------------------------------------------- */
 
 export const songsRouter : RouteConfig = (router: Router, data: any) => {
+
+    const ajv = new Ajv();
+    const validator = ajv.compile(songSchema);  // Compiled schema to use for validation on POST requests
 
     // GET endpoint (all songs)
     router.get('/songs', (request, response) => {
@@ -16,9 +20,10 @@ export const songsRouter : RouteConfig = (router: Router, data: any) => {
 
     // GET endpoint (by song id)
     router.get('/songs/:id', (request, response) => {
-
         const songId = parseInt(request.params.id);
-        if (isNaN(songId) == true) {                            // Ensure songId is actually a number
+
+        // Ensure songId is actually a number
+        if (isNaN(songId) == true) {
             logger.warn(`Request param ${request.params.id} is not a number`);
             return response.status(400).json({
                 statusCode: 400,
@@ -41,4 +46,30 @@ export const songsRouter : RouteConfig = (router: Router, data: any) => {
         }
 
     });
+
+    // POST endpoint
+    router.post('/songs', (request, response) => {
+        const isValid: boolean = validator(request.body);
+        if (!isValid) {
+            logger.warn(`Invalid POST request body`);
+            return response.status(400).json({
+                statusCode: 400,
+                statusDescription: 'Bad Request',
+                message: validator.errors?.[0].message
+            });
+        }
+
+        const newSong = {
+            id: data.length ? data[data.length - 1].id + 1 : 1,
+            ...request.body
+        };
+        data.push(newSong);
+
+        logger.info(`Successfully added new song entry with id ${newSong.id}`);
+        response.status(201).json({
+            statusCode: 201,
+            statusDescription: 'Created',
+            message: 'Song entry created.'
+        })
+    })
 }
