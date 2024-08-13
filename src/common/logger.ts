@@ -17,12 +17,12 @@ const logger = winston.createLogger({
         new winston.transports.Console({                        // Logs to console
             silent: process.env.NODE_ENV === 'test'
         }),
-        new DailyRotateFile({                               // Logs to file through DailyRotateFile
-            filename: path.join('logs', 'app-%DATE%.log'),  // Distinguish log files by date
-            datePattern: 'YYYY-MM-DD',
-            maxFiles: '1d',                                 // Keep files for 1 day
-            silent: process.env.NODE_ENV === 'test'
-        })
+        // new DailyRotateFile({                               // Logs to file through DailyRotateFile
+        //     filename: path.join('logs', 'app-%DATE%.log'),  // Distinguish log files by date
+        //     datePattern: 'YYYY-MM-DD',
+        //     maxFiles: '1d',                                 // Keep files for 1 day
+        //     silent: process.env.NODE_ENV === 'test'
+        // })
     ]
 })
 
