@@ -1,7 +1,6 @@
 const songSchema = {
     type: 'object',
     properties: {
-        id: { type: 'integer' },
         name: { type: 'string', minLength: 1 },
         artist: { type: 'string', minLength: 1 },
         album: { type: 'string' },

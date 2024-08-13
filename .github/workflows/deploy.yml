@@ -22,4 +22,14 @@ jobs:
       run: npm ci
 
     - name: Test
-      run: npx jest --verbose --coverage --coverageReporters=text --coverageReporters=none
+      run: npx jest --verbose --coverage
+
+    - name: CodeCov
+      uses: codecov/codecov-action@v4.0.1
+      with:
+        files: ./coverage/**/lcov.info
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
+
+

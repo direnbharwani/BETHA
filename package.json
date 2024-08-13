@@ -7,6 +7,7 @@
     "test": "jest",
     "build": "tsc",
     "start": "node public/index.js",
+    "local-start": "tsc && node public/index.js",
     "dev": "nodemon src/index.ts"
   },
   "keywords": [],
