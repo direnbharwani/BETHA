@@ -5,7 +5,7 @@
 
 <!-- PROJECT SHIELDS -->
 <div align="center">
-    <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/direnbharwani/BETHA/deploy.yml?style=for-the-badge&label=test">
+    <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/direnbharwani/BETHA/test.yml?style=for-the-badge&label=test">
     <img alt="Codecov" src="https://img.shields.io/codecov/c/github/direnbharwani/BETHA?style=for-the-badge">
 </div>
 
