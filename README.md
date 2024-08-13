@@ -147,27 +147,27 @@ docker-compose up --build
 <table>
     <tr>
         <td><strong>name*</strong></td>
-        <td><code>string</code><td>
+        <td><code>string</code></td>
         <td>Name of the song</td>
     </tr>
     <tr>
         <td><strong>artist*</strong></td>
-        <td><code>string</code><td>
+        <td><code>string</code></td>
         <td>Artist of the song</td>
     </tr>
     <tr>
         <td><strong>album</strong></td>
-        <td><code>string</code><td>
+        <td><code>string</code></td>
         <td>Album of the song</td>
     </tr>
     <tr>
         <td><strong>duration*</strong></td>
-        <td><code>int</code><td>
+        <td><code>int</code></td>
         <td>Duration of the song (in milliseconds)</td>
     </tr>
     <tr>
         <td><strong>year</strong></td>
-        <td><code>int</code><td>
+        <td><code>int</code></td>
         <td>Year the song was released</td>
     </tr>
 </table>
@@ -197,7 +197,7 @@ docker-compose up --build
 <table>
     <tr>
         <td><strong>id*</strong></td>
-        <td><code>int</code><td>
+        <td><code>int</code></td>
         <td>The song id</td>
     </tr>
 </table>
