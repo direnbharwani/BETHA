@@ -4,9 +4,10 @@ import path from 'path';
 /* ------------------------------------------------------------------------- */
 
 /**
- * Dependency to load
- * @param fsModule
- * @returns
+ * Function to load data based on the given filename.
+ * @param fsModule the
+ * @param fileName name of the json file
+ * @returns JSON object of the loaded file
  */
 export const dataLoader = (fsModule: typeof fs = fs, fileName: string) => {
     const dataPath = path.join(__dirname, fileName);

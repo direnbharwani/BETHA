@@ -1,29 +1,22 @@
-import express from 'express';
-import morgan from 'morgan';
-
-import logger from './common/logger';
-import songsRouter from './routes/songs';
+import { createApp } from './app';
+import { AppConfig } from './common/types';
+import { songsRouter } from './routes/songs';
 
 /* ------------------------------------------------------------------------- */
 
 // Define constants
-const app = express();
 const PORT = process.env.PORT || 3000;
 
 /* ------------------------------------------------------------------------- */
 
-// Use morgan for HTTP request logging
-// 'combined' is a format for logging the details of request (easy)
-app.use(morgan('combined', {
-    stream: {
-        write: (message: any) => logger.info(message.trim())
+const appConfig: AppConfig[] = [
+    {
+        route: songsRouter,
+        filename: 'songData.json'
     }
-}));
+];
 
-app.use(express.json());
-app.use('/api', songsRouter);
-
-/* ------------------------------------------------------------------------- */
+const app = createApp(appConfig);
 
 // Listen for requests
 if (process.env.NODE_ENV !== 'test') {
