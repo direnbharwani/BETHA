@@ -6,6 +6,7 @@
 <!-- PROJECT SHIELDS -->
 <div align="center">
     <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/direnbharwani/BETHA/deploy.yml?style=for-the-badge&label=test">
+    <img alt="Codecov" src="https://img.shields.io/codecov/c/github/direnbharwani/BETHA?style=for-the-badge">
 </div>
 
 <br>
@@ -52,7 +53,7 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<br/><br/>
+<br/>
 
 # Local Setup
 
@@ -72,13 +73,13 @@ docker-compose up --build
 ## 3. Interfacing the deployed Web App
 <p>The application has been deployed on Google Cloud Platform (GCP) as a containerized service to the following URL:
     <a href="url">https://betha-3yna5wlrmq-as.a.run.app/api/songs</a>
-    <br/>
+    <br/><br/>
     Tools like <code>cURL</code>, Insomnia or Postman are suggested for interfacing with the web app.
 </p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<br/><br/>
+<br/>
 
 # API Endpoints
 
@@ -220,7 +221,5 @@ docker-compose up --build
         <td>Song not found</td>
     </tr>
 </table>
-
-<br/><br/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
