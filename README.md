@@ -15,9 +15,8 @@
     The structure of the app has been built with modularity in mind.
 </p>
 
-# How to Use
+<h1>How to Use</h1>
 
-- [How to Use](#how-to-use)
 - [Features](#features)
 - [Local Setup](#local-setup)
   - [1. Running Locally](#1-running-locally)
