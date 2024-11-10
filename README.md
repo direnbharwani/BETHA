@@ -2,6 +2,7 @@
 <a name="readme-top"></a>
 
 <h1 align="center"> BETHA </h1>
+<p align="center"> Backend Take Home Assignment </p>
 
 <!-- PROJECT SHIELDS -->
 <div align="center">
@@ -69,12 +70,12 @@ npm install && npm run local-start
 ```bash
 docker-compose up --build
 ```
-## 3. Interfacing the deployed Web App
-<p>The application has been deployed on Google Cloud Platform (GCP) as a containerized service to the following URL:
+## ~~3. Interfacing the deployed Web App [Deprecated]~~
+<s>The application has been deployed on Google Cloud Platform (GCP) as a containerized service to the following URL:
     <a href="url">https://betha-3yna5wlrmq-as.a.run.app/api/songs</a>
     <br/><br/>
     Tools like <code>cURL</code>, Insomnia or Postman are suggested for interfacing with the web app.
-</p>
+</s>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -84,7 +85,7 @@ docker-compose up --build
 
 <list> URLs
     <li>(Local) <a href="url">http://localhost:3000/api/songs</a></li>
-    <li>(Web App) <a href="url">https://betha-3yna5wlrmq-as.a.run.app/api/songs</a></li>
+    <li><s>(Web App) <a href="url">https://betha-3yna5wlrmq-as.a.run.app/api/songs</a></s></li>
 </list>
 
 ## GET
